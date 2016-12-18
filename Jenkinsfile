@@ -4,6 +4,6 @@ stage 'Build'
 
 node('master') {
     checkout scm
-    sh 'mkdir build; cd build'
-    sh 'cmake .. && make'
+    sh 'mkdir build; cd build && cmake .. && make'
+    sh 'echo "FINISH"'
 }
