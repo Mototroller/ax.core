@@ -1,6 +1,8 @@
 #!groovy
 
-node('unix && 64bit') {
+stage 'Build'
+
+node('master') {
     checkout scm
     sh 'mkdir build; cd build'
     sh 'cmake .. && make'
