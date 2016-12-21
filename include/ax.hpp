@@ -140,6 +140,18 @@ namespace ax {
             return !(lh == rh); }
     };
     
+    /// Aligned POD cacheline
+    struct aligned_cacheline_t {
+        alignas(platform::cacheline_size)
+        unsigned char byte_array_[platform::cacheline_size];
+    };
+    
+    /// Explicitly defined std::aligned_storage<(aligned_cacheline_t)>::type
+    using aligned_cacheline = typename std::aligned_storage<
+        sizeof(aligned_cacheline_t),
+        alignof(aligned_cacheline_t)
+    >::type;
+    
     /**
      * Lihtweight test "framefork".
      * Singleton, can be used directly or by macro LIGHT_TEST(condition)

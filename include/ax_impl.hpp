@@ -164,6 +164,7 @@ namespace ax {
         if(lt.results_.size() > 0) {
             for(auto const& s : lt.results_) stdprintf("  %%", s);
             stdprintf("\n!!! %% error(s) detected !!!", lt.results_.size());
+            exit(1);
         } else {
             stdprintf("\n*** No errors detected ***");
         }
