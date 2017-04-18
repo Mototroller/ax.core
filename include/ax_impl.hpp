@@ -7,8 +7,8 @@ namespace ax {
     template <typename... T>
     void stdcout(T&&... smth) {
         std::ostringstream stream;
-        using temp_t = int[sizeof...(T) + 1];
-        temp_t { (stream << std::forward<T>(smth), 0)... };
+        using temp_t = int[sizeof...(T)];
+        (void) temp_t { (stream << std::forward<T>(smth), 0)... };
         stream << "\n";
         std::cout << stream.str();
     }
